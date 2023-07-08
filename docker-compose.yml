@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:14.3
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test
+    ports:
+      - 5432:5432
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1GB
+        reservations:
+          cpus: "2"
+          memory: 1GB
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer
+    restart: always
+    ports:
+      - 8077:8080
